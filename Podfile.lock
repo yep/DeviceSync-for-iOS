@@ -1,0 +1,24 @@
+PODS:
+  - Expecta (0.2.3)
+  - KIF (HEAD based on 2.0.0)
+  - PeerTalk (HEAD based on 0.0.1)
+  - Specta (0.1.11)
+
+DEPENDENCIES:
+  - Expecta
+  - KIF (HEAD)
+  - PeerTalk (HEAD)
+  - Specta (from `https://github.com/specta/specta.git`, branch `xctest`)
+
+EXTERNAL SOURCES:
+  Specta:
+    :branch: xctest
+    :git: https://github.com/specta/specta.git
+
+SPEC CHECKSUMS:
+  Expecta: dbc4a27fabb853bdd2e907e33f11ee43a9a47d0c
+  KIF: ff3b46deb62ce3f8e99c6a2c786729e1eea241ba
+  PeerTalk: 22535e3e2847fd35fbca2b257479220f20245c3d
+  Specta: ca286a11a17fb4b8839ab50cdcbbe7d7acf33d67
+
+COCOAPODS: 0.27.1

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="LXZ-qy-dHD">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="qbG-XR-1cl">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="LXZ-qy-dHD" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J3u-wH-zf8">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="I8c-uJ-i2m" kind="relationship" relationship="rootViewController" id="CbI-hR-aNC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xv0-Uv-FfW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-698" y="-332"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="mhu-pd-ATF">
+            <objects>
+                <viewController id="I8c-uJ-i2m" customClass="CSMainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fu1-cC-RWn"/>
+                        <viewControllerLayoutGuide type="bottom" id="rpH-ED-ZAU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qmN-Dd-1Qc">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="log" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKK-ne-3x8">
+                                <rect key="frame" x="-1" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" label="Main View"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CKK-ne-3x8" firstAttribute="leading" secondItem="qmN-Dd-1Qc" secondAttribute="leading" constant="-1" id="GEU-a5-Jw9"/>
+                            <constraint firstAttribute="trailing" secondItem="CKK-ne-3x8" secondAttribute="trailing" constant="1" id="S82-W3-y8k"/>
+                            <constraint firstItem="CKK-ne-3x8" firstAttribute="top" secondItem="qmN-Dd-1Qc" secondAttribute="top" id="sB2-cg-hzn"/>
+                            <constraint firstAttribute="bottom" secondItem="CKK-ne-3x8" secondAttribute="bottom" id="w04-EO-Q8K"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ob0-Mb-g5g">
+                        <barButtonItem key="rightBarButtonItem" title="Sync" id="doH-pB-Obu">
+                            <connections>
+                                <action selector="syncButtonPressed:" destination="I8c-uJ-i2m" id="FrE-Bs-xfq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="outputTextView" destination="CKK-ne-3x8" id="XeA-P5-pko"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iff-3W-ua7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="253" y="-332"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="U9P-c6-LKm">
+            <objects>
+                <viewController id="Gme-AQ-a8l" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DP2-rE-ROP"/>
+                        <viewControllerLayoutGuide type="bottom" id="sa2-Kn-E1G"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vg7-SA-7EU">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5EW-rO-Xh5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>
