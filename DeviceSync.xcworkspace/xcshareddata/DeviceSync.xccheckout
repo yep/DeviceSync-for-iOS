@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>0BF1F2B5-E3CC-431D-B600-E1ED43C126DB</string>
+	<string>84688AD5-B547-40C5-945E-4E9E366A8023</string>
 	<key>IDESourceControlProjectName</key>
 	<string>DeviceSync</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,11 +14,11 @@
 		<string>ssh://github.com/yep/iosCalSync.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>DeviceSync.xcodeproj/project.xcworkspace</string>
+	<string>DeviceSync.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>059149A1-8150-4CD6-83B2-6D0B0BEDF6E3</key>
-		<string>../..</string>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/yep/iosCalSync.git</string>

@@ -1,9 +1,8 @@
 //
-//  DSAppDelegate.h
-//  DeviceSync
+//  IntegrationTests.m
+//  IntegrationTests
 //
 // Copyright (c) 2013 Jahn Bertsch
-// Copyright (c) 2012 Rasmus Andersson <http://rsms.me/>
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,10 +23,18 @@
 // THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import <Specta.h>
+#import <KIF.h>
 
-@interface DSAppDelegate : UIResponder <UIApplicationDelegate>
+SpecBegin(App)
 
-@property (strong, nonatomic) UIWindow *window;
+describe(@"Main view", ^{
 
-@end
+  it(@"should have a main view and a sync button", ^{
+    [tester waitForViewWithAccessibilityLabel:@"Main View"];
+    [tester waitForTappableViewWithAccessibilityLabel:@"Sync"];
+  });
+
+});
+
+SpecEnd

@@ -1,5 +1,5 @@
 //
-//  DSAppDelegate.h
+//  EKEvent+NSCoder.h
 //  DeviceSync
 //
 // Copyright (c) 2013 Jahn Bertsch
@@ -24,10 +24,11 @@
 // THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import <EventKit/EventKit.h>
 
-@interface DSAppDelegate : UIResponder <UIApplicationDelegate>
+@interface EKEvent (NSCoder)
 
-@property (strong, nonatomic) UIWindow *window;
+- (id)  initWithCoder:(NSCoder *)decoder;
+- (void)encodeWithCoder:(NSCoder *)encoder;
 
 @end

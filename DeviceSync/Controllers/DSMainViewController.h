@@ -1,5 +1,5 @@
 //
-//  DSAppDelegate.h
+//  DSMainViewController.h
 //  DeviceSync
 //
 // Copyright (c) 2013 Jahn Bertsch
@@ -25,9 +25,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PTChannel.h"
 
-@interface DSAppDelegate : UIResponder <UIApplicationDelegate>
+@interface DSMainViewController : UIViewController <PTChannelDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (weak) IBOutlet UITextView *outputTextView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *syncButtonPressed;
 
 @end
