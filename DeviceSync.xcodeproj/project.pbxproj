@@ -19,6 +19,7 @@
 		170BCC731831767C000059F5 /* DSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170BCC721831767C000059F5 /* DSMainViewController.m */; };
 		170BCC78183176B6000059F5 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 170BCC76183176B6000059F5 /* icon.png */; };
 		170BCC79183176B6000059F5 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 170BCC77183176B6000059F5 /* Media.xcassets */; };
+		17AEC72F183664F8007518A3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 17AEC72E183664F8007518A3 /* README.md */; };
 		E3C3444C6EB54287BCF3BC5A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2E687948FD741E48DC9AA29 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		170BCC7418317694000059F5 /* DSProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DSProtocol.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		170BCC76183176B6000059F5 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		170BCC77183176B6000059F5 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		17AEC72E183664F8007518A3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		3915A41CD197461C8F2CF7B1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		B2E687948FD741E48DC9AA29 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -65,6 +67,7 @@
 		170BCC2A18317510000059F5 = {
 			isa = PBXGroup;
 			children = (
+				17AEC72E183664F8007518A3 /* README.md */,
 				170BCC3C18317510000059F5 /* DeviceSync */,
 				170BCC3518317510000059F5 /* Frameworks */,
 				170BCC3418317510000059F5 /* Products */,
@@ -214,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17AEC72F183664F8007518A3 /* README.md in Resources */,
 				170BCC79183176B6000059F5 /* Media.xcassets in Resources */,
 				170BCC78183176B6000059F5 /* icon.png in Resources */,
 				170BCC6B18317663000059F5 /* Main_iPhone.storyboard in Resources */,

@@ -1,26 +1,35 @@
-iosCalSync
-==========
+DeviceSync for iOS
+==================
 
 On OS X 10.9 (Mavericks), calendar synchronization between iOS and OS X no longer works with USB.
 
-If you do not want to use iCloud for synchronization, this litte app may help.
+If you do not want to use iCloud for synchronization, this litte app may provide a workaround.
 
 Usage
 -----
 
  * Connect your iOS and OS X device to each other by USB
- * Start [osxCalendarSync](https://github.com/yep/osxCalSync) on OS X
- * Start [iosCalendarSync](https://github.com/yep/iosCalSync) on iOS
- * Press 'sync' in iosCalendarSync to start synchronization
+ * Start [DeviceSync for OS X](https://github.com/yep/DeviceSync-for-OS-X) on OS X
+ * Start [DeviceSync for iOS](https://github.com/yep/DeviceSync-for-iOS) on iOS
+ * Press 'Sync' button in 'DeviceSync for iOS' to start synchronization
 
 WARNING
 -------
 
-Synchronization is one way: from iOS to OS X.
+Synchronization is currently one way: from iOS to OS X.
 
 ALL CALENDAR DATA ON YOUR OS X DEVICE WILL BE OVERWRITTEN!
 
 Be sure to add and update your calendar entries on iOS only.
+
+Roadmap
+-------
+
+As time permits, I will add support for contact synchronization and improve merging behavior of calendar entries.
+
+For feature requests, please add an issue at github's [issue tracker](https://github.com/yep/DeviceSync-for-iOS/issues).
+
+Even better, support open source software and add a bounty to your github issue at [bountysource](https://www.bountysource.com/). Small and symbolical donations are welcome as well.
 
 License
 -------
@@ -49,3 +58,5 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ```
+
+`OS X` and `iOS` are trademarks of Apple Inc., registered in the U.S. and other countries. 
