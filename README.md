@@ -5,6 +5,11 @@ On OS X 10.9 (Mavericks), calendar synchronization between iOS and OS X no longe
 
 If you do not want to use iCloud for synchronization, this litte app may provide a workaround.
 
+Install
+-------
+
+Download 'DeviceSync for OS X' as zip file from [github release page](https://github.com/yep/DeviceSync-for-OS-X/releases).
+
 Usage
 -----
 
@@ -19,6 +24,8 @@ WARNING
 Synchronization is currently one way: from iOS to OS X.
 
 ALL CALENDAR DATA ON YOUR OS X DEVICE WILL BE OVERWRITTEN!
+
+No warranty for data loss.
 
 Be sure to add and update your calendar entries on iOS only.
 
@@ -59,4 +66,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ```
 
-`OS X` and `iOS` are trademarks of Apple Inc., registered in the U.S. and other countries. 
+OS X and iOS are trademarks of Apple Inc., registered in the U.S. and other countries. 
