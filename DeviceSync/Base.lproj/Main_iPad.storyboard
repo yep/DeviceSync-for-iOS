@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="LXZ-qy-dHD">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="qbG-XR-1cl">
             <objects>
-                <navigationController definesPresentationContext="YES" id="LXZ-qy-dHD" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LXZ-qy-dHD" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="J3u-wH-zf8">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -57,7 +57,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="outputTextView" destination="CKK-ne-3x8" id="Y5o-pM-oQP"/>
-                        <outlet property="syncButtonPressed" destination="doH-pB-Obu" id="Dfg-5g-v8N"/>
+                        <outlet property="syncButtonPressed" destination="doH-pB-Obu" id="UTb-KI-84J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iff-3W-ua7" userLabel="First Responder" sceneMemberID="firstResponder"/>

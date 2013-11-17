@@ -49,15 +49,16 @@ typedef struct _DSDeviceSyncEventFrame {
 } DSDeviceSyncEventFrame;
 
 // prepare data to be sent data over usb
+#pragma clang diagnostic ignored "-Wunused-function" // it is used, it's static. disable warning about being unused.
 static dispatch_data_t DSDeviceSyncDispatchData(NSData *data)
 {
     size_t length = data.length;
     DSDeviceSyncEventFrame *eventFrame = CFAllocatorAllocate(nil, sizeof(DSDeviceSyncFrameTypeEvent) + length, 0);
 
-    memcpy(eventFrame->event, data.bytes, length); // Copy bytes to event array of DSDeviceSyncEventFrame stuct
-    eventFrame->length = htonl(length); // Convert integer to network byte order
+    memcpy(eventFrame->event, data.bytes, length); // copy bytes to event array of DSDeviceSyncEventFrame stuct
+    eventFrame->length = htonl(length); // convert integer to network byte order
 
-    // Wrap the eventFrame in a dispatch data object
+    // wrap the eventFrame in a dispatch data object
     return dispatch_data_create((const void *)eventFrame, sizeof(DSDeviceSyncEventFrame) + length, nil, ^{
         CFAllocatorDeallocate(nil, eventFrame);
     });

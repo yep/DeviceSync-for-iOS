@@ -25,11 +25,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PTChannel.h"
+#import "DSChannelDelegate.h"
 
-@interface DSMainViewController : UIViewController <PTChannelDelegate>
+@interface DSMainViewController : UIViewController
 
 @property (weak) IBOutlet UITextView *outputTextView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButtonPressed;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *syncButtonPressed;
+
+@property (nonatomic, strong) DSChannelDelegate *channelDelegate;
+
+- (void)displayMessage:(NSString *)message;
 
 @end
