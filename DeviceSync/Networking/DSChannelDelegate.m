@@ -43,6 +43,7 @@
                 } else {
                     [self.mainViewController displayMessage:@"First, download 'DeviceSync for OS X' on your OS X computer from:\n"];
                     [self.mainViewController displayMessage:@"http://bit.ly/1ikPQmL"];
+                    [self.mainViewController displayMessage:@"Latest version of 'DeviceSync for OS X' is 1.1"];
                     [self.mainViewController displayMessage:@"Then, plug in USB cable and launch 'DeviceSync for OS X' on your computer to start calendar synchronizaition."];
                 }
             }];
@@ -112,7 +113,7 @@
     self.peerChannel.userInfo = address;
     [self.mainViewController displayMessage:@"USB connection to 'DeviceSync for OS X' established."];
     [self.mainViewController displayMessage:@"Now press the 'Sync' button above."];
-    [self.mainViewController displayMessage:@"ONCE AGAIN: ALL DATA ON YOUR OS X DEVICE WILL BE DELETED AND THEN THE FIRST 100 UPCOMING EVENTS WILL BE COPIED OVER TO OS X."];
+    [self.mainViewController displayMessage:@"ONCE AGAIN: ALL CALENDAR DATA ON YOUR OS X DEVICE WILL BE DELETED AND EVENTS FROM IOS WILL BE COPIED TO OS X!"];
 
     // send some information about ourselves to the other end
     [self sendDeviceInfo];
