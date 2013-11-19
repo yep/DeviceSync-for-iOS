@@ -27,7 +27,6 @@
 #import "RESideMenu.h"
 
 @interface DSAboutViewController ()
-
 @end
 
 @implementation DSAboutViewController
@@ -36,7 +35,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -44,7 +42,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+    NSError *error = Nil;
+    NSString *credits = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Credits" ofType:@"txt"] encoding:NSUTF8StringEncoding error:&error];
+    if (credits == nil) {
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+    } else {
+        self.textView.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
+        self.textView.text = credits;
+    }
 }
 
 - (void)didReceiveMemoryWarning

@@ -37,6 +37,8 @@
 		1782592318390E42006C570E /* DSAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1782592118390E42006C570E /* DSAboutViewController.m */; };
 		178259271839115D006C570E /* DSChannelDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 178259261839115D006C570E /* DSChannelDelegate.m */; };
 		178259281839115D006C570E /* DSChannelDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 178259261839115D006C570E /* DSChannelDelegate.m */; };
+		1782592B183BBFDD006C570E /* Credits.txt in Resources */ = {isa = PBXBuildFile; fileRef = 17825929183BBFDD006C570E /* Credits.txt */; };
+		1782592C183BBFDD006C570E /* Credits.txt in Resources */ = {isa = PBXBuildFile; fileRef = 17825929183BBFDD006C570E /* Credits.txt */; };
 		17AEC72F183664F8007518A3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 17AEC72E183664F8007518A3 /* README.md */; };
 		492266B3C5364B74A45DA6C0 /* libPods-IntegrationTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4631D28488DC45CE94C4C43F /* libPods-IntegrationTests.a */; };
 		B5731750372B4B9886F20D03 /* libPods-UnitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 835787979E25474199D6ADCF /* libPods-UnitTests.a */; };
@@ -102,6 +104,7 @@
 		1782592118390E42006C570E /* DSAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSAboutViewController.m; sourceTree = "<group>"; };
 		178259251839115D006C570E /* DSChannelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSChannelDelegate.h; path = Networking/DSChannelDelegate.h; sourceTree = "<group>"; };
 		178259261839115D006C570E /* DSChannelDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSChannelDelegate.m; path = Networking/DSChannelDelegate.m; sourceTree = "<group>"; };
+		1782592A183BBFDD006C570E /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = DeviceSync/en.lproj/Credits.txt; sourceTree = SOURCE_ROOT; };
 		17AEC72E183664F8007518A3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		3915A41CD197461C8F2CF7B1 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		4631D28488DC45CE94C4C43F /* libPods-IntegrationTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IntegrationTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				170BCC76183176B6000059F5 /* icon.png */,
+				17825929183BBFDD006C570E /* Credits.txt */,
 				170BCC77183176B6000059F5 /* Media.xcassets */,
 			);
 			path = Resources;
@@ -417,6 +421,7 @@
 				170BCC78183176B6000059F5 /* icon.png in Resources */,
 				170BCC6B18317663000059F5 /* Main_iPhone.storyboard in Resources */,
 				170BCC6A18317663000059F5 /* Main_iPad.storyboard in Resources */,
+				1782592B183BBFDD006C570E /* Credits.txt in Resources */,
 				170BCC4118317510000059F5 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				170EC8891838FBFA00CAEE1E /* InfoPlist.strings in Resources */,
+				1782592C183BBFDD006C570E /* Credits.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,6 +628,14 @@
 				170EC8881838FBFA00CAEE1E /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		17825929183BBFDD006C570E /* Credits.txt */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1782592A183BBFDD006C570E /* en */,
+			);
+			name = Credits.txt;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -139,15 +139,13 @@
         <scene sceneID="20Z-8C-xmU">
             <objects>
                 <viewController storyboardIdentifier="DSAboutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0No-MS-b4o" customClass="DSAboutViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8Og-kj-OJI"/>
-                        <viewControllerLayoutGuide type="bottom" id="iYz-J9-4Q5"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8LD-fW-Gbj">
+                    <textView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="about" id="M0a-DA-OdO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                     <navigationItem key="navigationItem" id="Gp3-F2-jvS">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="2UU-62-jQX">
                             <connections>
@@ -155,6 +153,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="menuButtonPressed" destination="2UU-62-jQX" id="WgN-sA-8e8"/>
+                        <outlet property="textView" destination="M0a-DA-OdO" id="Tau-oH-5gy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xkn-5g-jWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
