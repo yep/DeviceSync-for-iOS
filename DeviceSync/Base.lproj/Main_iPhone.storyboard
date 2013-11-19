@@ -73,7 +73,7 @@
                     <navigationItem key="navigationItem" id="Kk9-eC-3rC">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="RlG-0C-jIB">
                             <connections>
-                                <action selector="menuButtonPressed:" destination="h0q-k0-rMn" id="4Vk-1L-Es1"/>
+                                <action selector="menuButtonPressed:" destination="h0q-k0-rMn" id="pV2-yg-5xR"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Sync" id="QrL-bd-1Mx">

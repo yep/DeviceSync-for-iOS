@@ -28,7 +28,7 @@
 
 @interface DSAboutViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButtonPressed;
 @property (strong, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButtonPressed;
 
 @end
