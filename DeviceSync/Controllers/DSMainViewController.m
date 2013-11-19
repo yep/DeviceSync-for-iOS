@@ -126,20 +126,35 @@
 
         [self displayMessage:[NSString stringWithFormat:@"Exporting calendar with title '%@'.", calendar.title]];
 
-        NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:[[NSDate distantFuture] timeIntervalSinceReferenceDate]];
         NSArray *calendarArray = [NSArray arrayWithObject:calendar];
-        NSPredicate *fetchCalendarEvents = [eventStore predicateForEventsWithStartDate:[NSDate date] endDate:endDate calendars:calendarArray];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateStyle:NSDateFormatterShortStyle];
+
+        // sync range
+        NSInteger futureDays = [[NSUserDefaults standardUserDefaults] integerForKey:@"futureDays"];
+        NSInteger pastDays = [[NSUserDefaults standardUserDefaults] integerForKey:@"pastDays"];
+        DLog(@"past days=%ld", (long)pastDays);
+        DLog(@"future days=%ld", (long)futureDays);
+
+        NSDateComponents *futureDaysComponent = [[NSDateComponents alloc] init];
+        futureDaysComponent.day = futureDays;
+        NSDateComponents *pastDaysComponent = [[NSDateComponents alloc] init];
+        pastDaysComponent.day = -pastDays;
+
+        NSDate *currentDate = [NSDate date];
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDate *startDate = [calendar dateByAddingComponents:pastDaysComponent toDate:currentDate options:0];
+        NSDate *endDate = [calendar dateByAddingComponents:futureDaysComponent toDate:currentDate options:0];
+
+        [self displayMessage:[NSString stringWithFormat:@"Synchronzing from %@ to %@.", [dateFormat stringFromDate:startDate], [dateFormat stringFromDate:endDate]]];
+
+        NSPredicate *fetchCalendarEvents = [eventStore predicateForEventsWithStartDate:startDate endDate:endDate calendars:calendarArray];
         NSArray *eventList = [eventStore eventsMatchingPredicate:fetchCalendarEvents];
 
         [self displayMessage:[NSString stringWithFormat:@"Found %lu calendar events.", (unsigned long)eventList.count]];
 
         for (int i = 0; i < eventList.count; i++) {
             [self sendEvent:[eventList objectAtIndex:i]];
-
-            if (i == 99) {
-                [self displayMessage:[NSString stringWithFormat:@"Only exporting first 100 events."]];
-                break;
-            }
         }
     }
 }

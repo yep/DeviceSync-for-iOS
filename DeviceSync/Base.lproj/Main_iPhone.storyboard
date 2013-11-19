@@ -110,7 +110,7 @@
             </objects>
             <point key="canvasLocation" x="-1125" y="578"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Settings View Controller - Settings-->
         <scene sceneID="Do8-eV-JYw">
             <objects>
                 <viewController storyboardIdentifier="DSSettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="P5p-Lw-gKE" customClass="DSSettingsViewController" sceneMemberID="viewController">
@@ -123,7 +123,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kYb-rz-2Uh">
-                                <rect key="frame" x="20" y="85" width="43" height="30"/>
+                                <rect key="frame" x="20" y="85" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -132,7 +132,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eef-WQ-m92">
-                                <rect key="frame" x="20" y="128" width="43" height="30"/>
+                                <rect key="frame" x="20" y="128" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -141,14 +141,14 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Future Days to Sync" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5FT-8k-oeP">
-                                <rect key="frame" x="71" y="89" width="156" height="21"/>
+                                <rect key="frame" x="78" y="89" width="156" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Past Days to Sync" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sh0-Qm-YhV">
-                                <rect key="frame" x="71" y="131" width="229" height="21"/>
+                                <rect key="frame" x="78" y="131" width="229" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -163,7 +163,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="1ta-fY-wrC">
+                    <navigationItem key="navigationItem" title="Settings" id="1ta-fY-wrC">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="c5a-Kv-m1r">
                             <connections>
                                 <action selector="menuButtonPressed:" destination="P5p-Lw-gKE" id="4zC-yB-Sf0"/>
@@ -179,7 +179,7 @@
             </objects>
             <point key="canvasLocation" x="-73" y="578"/>
         </scene>
-        <!--About View Controller-->
+        <!--About View Controller - About-->
         <scene sceneID="20Z-8C-xmU">
             <objects>
                 <viewController storyboardIdentifier="DSAboutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0No-MS-b4o" customClass="DSAboutViewController" sceneMemberID="viewController">
@@ -190,7 +190,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
-                    <navigationItem key="navigationItem" id="Gp3-F2-jvS">
+                    <navigationItem key="navigationItem" title="About" id="Gp3-F2-jvS">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="2UU-62-jQX">
                             <connections>
                                 <action selector="menuButtonPressed:" destination="0No-MS-b4o" id="IJD-W1-bul"/>
