@@ -46,6 +46,20 @@
     self.menuViewController = menuViewController;
     self.backgroundImage = [UIImage imageNamed:@"Stars"];
     self.delegate = (DSMenuViewController *)self.menuViewController;
+
+    // default values
+    NSInteger futureDays = [[NSUserDefaults standardUserDefaults] integerForKey:@"futureDays"];
+    NSInteger pastDays = [[NSUserDefaults standardUserDefaults] integerForKey:@"pastDays"];
+    if (futureDays == 0) {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setInteger:90 forKey:@"futureDays"];
+        [userDefaults synchronize];
+    }
+    if (pastDays == 0) {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setInteger:30 forKey:@"pastDays"];
+        [userDefaults synchronize];
+    }
 }
 
 @end

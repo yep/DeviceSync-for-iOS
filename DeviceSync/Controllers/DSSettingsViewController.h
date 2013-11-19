@@ -26,9 +26,11 @@
 #import <UIKit/UIKit.h>
 #import "DSChannelDelegate.h"
 
-@interface DSSettingsViewController : UIViewController
+@interface DSSettingsViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) DSChannelDelegate *channelDelegate;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButtonPressed;
+@property (weak, nonatomic) IBOutlet UITextField *futureDaysTextField;
+@property (weak, nonatomic) IBOutlet UITextField *pastDaysTextField;
 
 @end

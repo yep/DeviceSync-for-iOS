@@ -36,7 +36,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -44,7 +43,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+    NSInteger futureDays = [[NSUserDefaults standardUserDefaults] integerForKey:@"futureDays"];
+    NSInteger pastDays = [[NSUserDefaults standardUserDefaults] integerForKey:@"pastDays"];
+    self.futureDaysTextField.text = [@(futureDays) stringValue];
+    self.pastDaysTextField.text = [@(pastDays) stringValue];
+    [self.futureDaysTextField becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,7 +59,40 @@
 
 - (IBAction)menuButtonPressed:(id)sender
 {
+    if (self.isFirstResponder) {
+        [self resignFirstResponder];
+    }
     [self.sideMenuViewController presentMenuViewController];
+}
+
+#pragma mark - UITextInputDelegate
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == self.futureDaysTextField) {
+        NSInteger futureDays = [self.futureDaysTextField.text intValue];
+        if (futureDays < 1) {
+            futureDays = 1;
+        } else if (futureDays > 999) {
+            futureDays = 999;
+        }
+        self.futureDaysTextField.text = [@(futureDays) stringValue];
+
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setInteger:futureDays forKey:@"futureDays"];
+        [userDefaults synchronize];
+    } else if (textField == self.pastDaysTextField) {
+        NSInteger pastDays = [self.pastDaysTextField.text intValue];
+        if (pastDays < 1) {
+            pastDays = 1;
+        } else if (pastDays > 999) {
+            pastDays = 999;
+        }
+        self.pastDaysTextField.text = [@(pastDays) stringValue];
+
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setInteger:pastDays forKey:@"pastDays"];
+        [userDefaults synchronize];
+    }
 }
 
 @end
