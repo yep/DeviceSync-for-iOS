@@ -1,28 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="1DL-jR-GNe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uuh-T2-bhu">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="k50-EV-CZf">
             <objects>
-                <navigationController definesPresentationContext="YES" id="1DL-jR-GNe" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="DSContentViewController" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1DL-jR-GNe" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VEw-nS-fL6">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
                         <segue destination="h0q-k0-rMn" kind="relationship" relationship="rootViewController" id="WWR-O3-xIR"/>
+                        <segue destination="P5p-Lw-gKE" kind="push" id="0CC-0b-3Ao"/>
+                        <segue destination="0No-MS-b4o" kind="push" id="e2U-0Q-LjZ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZY3-gK-0bL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-609" y="-153"/>
         </scene>
+        <!--Initial View Controller-->
+        <scene sceneID="LpC-kB-XBk">
+            <objects>
+                <viewController storyboardIdentifier="DSInitialViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uuh-T2-bhu" customClass="DSInitialViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tY6-YU-8FD"/>
+                        <viewControllerLayoutGuide type="bottom" id="55l-GP-oQc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BQU-xQ-B2I">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uet-Ki-jNx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1125" y="-139"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="XRk-Ur-ixN">
             <objects>
-                <viewController id="h0q-k0-rMn" customClass="DSMainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DSMainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h0q-k0-rMn" customClass="DSMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="30s-re-bHj"/>
                         <viewControllerLayoutGuide type="bottom" id="mQL-n1-58E"/>
@@ -51,6 +71,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Kk9-eC-3rC">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="RlG-0C-jIB">
+                            <connections>
+                                <action selector="menuButtonPressed:" destination="h0q-k0-rMn" id="pV2-yg-5xR"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Sync" id="QrL-bd-1Mx">
                             <connections>
                                 <action selector="syncButtonPressed:" destination="h0q-k0-rMn" id="2vH-7B-lqn"/>
@@ -58,13 +83,128 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="menuButtonPressed" destination="RlG-0C-jIB" id="FnM-im-uAm"/>
                         <outlet property="outputTextView" destination="Qmg-Nl-57d" id="svi-te-Oar"/>
-                        <outlet property="syncButtonPressed" destination="QrL-bd-1Mx" id="dmM-hl-b6c"/>
+                        <outlet property="syncButtonPressed" destination="QrL-bd-1Mx" id="06V-SN-MLK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGz-t3-4cV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-169" y="-153"/>
+            <point key="canvasLocation" x="-61" y="-153"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="WJG-WT-eEE">
+            <objects>
+                <viewController storyboardIdentifier="DSMenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nzk-61-5sP" customClass="DSMenuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CIN-5I-QIV"/>
+                        <viewControllerLayoutGuide type="bottom" id="ity-xt-1De"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="idX-oc-nya">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rXN-7Y-dgr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1125" y="578"/>
+        </scene>
+        <!--Settings View Controller - Settings-->
+        <scene sceneID="Do8-eV-JYw">
+            <objects>
+                <viewController storyboardIdentifier="DSSettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="P5p-Lw-gKE" customClass="DSSettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="B6s-Lj-Kxf"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dab-77-drZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CiE-jN-NPG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kYb-rz-2Uh">
+                                <rect key="frame" x="20" y="85" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="P5p-Lw-gKE" id="frm-3Q-WOh"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eef-WQ-m92">
+                                <rect key="frame" x="20" y="128" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="P5p-Lw-gKE" id="CRp-sJ-x70"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Future Days to Sync" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5FT-8k-oeP">
+                                <rect key="frame" x="78" y="89" width="156" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Past Days to Sync" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sh0-Qm-YhV">
+                                <rect key="frame" x="78" y="131" width="229" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set how many days before and after today will be synchronized." lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="284" translatesAutoresizingMaskIntoConstraints="NO" id="Afv-Gb-f5u">
+                                <rect key="frame" x="20" y="173" width="284" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="1ta-fY-wrC">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="c5a-Kv-m1r">
+                            <connections>
+                                <action selector="menuButtonPressed:" destination="P5p-Lw-gKE" id="4zC-yB-Sf0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="futureDaysTextField" destination="kYb-rz-2Uh" id="pld-OQ-xTu"/>
+                        <outlet property="pastDaysTextField" destination="Eef-WQ-m92" id="oeP-2P-c4T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dAP-yJ-KHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-73" y="578"/>
+        </scene>
+        <!--About View Controller - About-->
+        <scene sceneID="20Z-8C-xmU">
+            <objects>
+                <viewController storyboardIdentifier="DSAboutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0No-MS-b4o" customClass="DSAboutViewController" sceneMemberID="viewController">
+                    <textView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="about" id="M0a-DA-OdO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <navigationItem key="navigationItem" title="About" id="Gp3-F2-jvS">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="2UU-62-jQX">
+                            <connections>
+                                <action selector="menuButtonPressed:" destination="0No-MS-b4o" id="IJD-W1-bul"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuButtonPressed" destination="2UU-62-jQX" id="WgN-sA-8e8"/>
+                        <outlet property="textView" destination="M0a-DA-OdO" id="Tau-oH-5gy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xkn-5g-jWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-73" y="1297"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

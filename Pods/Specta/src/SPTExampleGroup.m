@@ -31,17 +31,6 @@ static NSArray *ClassesWithClassMethod(SEL classMethodSelector) {
   return classesWithClassMethod;
 }
 
-static void InvokeClassMethod(NSArray *classes, SEL selector) {
-  for(Class aClass in classes) {
-    Method globalMethod = class_getClassMethod(aClass, selector);
-    unsigned numberOfArguments = method_getNumberOfArguments(globalMethod);
-    if (numberOfArguments == 2) {
-      IMP globalMethodIMP = method_getImplementation(globalMethod);
-      globalMethodIMP(aClass, selector);
-    }
-  }
-}
-
 @interface NSObject (SpectaGlobalBeforeAfterEach)
 
 + (void)beforeEach;
@@ -215,7 +204,9 @@ static void runExampleBlock(id block, NSString *name) {
     globalBeforeEachClasses = ClassesWithClassMethod(@selector(beforeEach));
   });
 
-  InvokeClassMethod(globalBeforeEachClasses, @selector(beforeEach));
+  for (Class class in globalBeforeEachClasses) {
+    [class beforeEach];
+  }
 }
 
 - (void)runGlobalAfterEachHooks:(NSString *)compiledName {
@@ -225,7 +216,9 @@ static void runExampleBlock(id block, NSString *name) {
     globalAfterEachClasses = ClassesWithClassMethod(@selector(afterEach));
   });
 
-  InvokeClassMethod(globalAfterEachClasses, @selector(afterEach));
+  for (Class class in globalAfterEachClasses) {
+    [class afterEach];
+  }
 }
 
 - (void)runBeforeHooks:(NSString *)compiledName {

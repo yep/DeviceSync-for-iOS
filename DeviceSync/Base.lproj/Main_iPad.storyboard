@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="LXZ-qy-dHD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="jCp-sh-pnc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
+        <!--Initial View Controller-->
+        <scene sceneID="uCB-3i-rtd">
+            <objects>
+                <viewController id="jCp-sh-pnc" customClass="DSInitialViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KJu-Py-1D2"/>
+                        <viewControllerLayoutGuide type="bottom" id="s9f-JZ-CdD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="l5K-bq-VxN">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="weo-gp-Bah" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1583" y="-337"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="qbG-XR-1cl">
             <objects>
-                <navigationController definesPresentationContext="YES" id="LXZ-qy-dHD" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="DSContentViewController" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LXZ-qy-dHD" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="J3u-wH-zf8">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
                         <segue destination="I8c-uJ-i2m" kind="relationship" relationship="rootViewController" id="CbI-hR-aNC"/>
+                        <segue destination="DvZ-TW-fLm" kind="push" id="scr-U8-wCa"/>
+                        <segue destination="3dh-w6-R4j" kind="push" id="SS5-So-6tK"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xv0-Uv-FfW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -22,7 +42,7 @@
         <!--Main View Controller-->
         <scene sceneID="mhu-pd-ATF">
             <objects>
-                <viewController id="I8c-uJ-i2m" customClass="DSMainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DSMainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I8c-uJ-i2m" customClass="DSMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fu1-cC-RWn"/>
                         <viewControllerLayoutGuide type="bottom" id="rpH-ED-ZAU"/>
@@ -49,6 +69,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ob0-Mb-g5g">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="5iJ-cC-eog">
+                            <connections>
+                                <action selector="menuButtonPressed:" destination="I8c-uJ-i2m" id="WKh-4g-YjK"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Sync" id="doH-pB-Obu">
                             <connections>
                                 <action selector="syncButtonPressed:" destination="I8c-uJ-i2m" id="FrE-Bs-xfq"/>
@@ -56,18 +81,130 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="menuButtonPressed" destination="5iJ-cC-eog" id="wo0-41-BOx"/>
                         <outlet property="outputTextView" destination="CKK-ne-3x8" id="Y5o-pM-oQP"/>
-                        <outlet property="syncButtonPressed" destination="doH-pB-Obu" id="Dfg-5g-v8N"/>
+                        <outlet property="syncButtonPressed" destination="doH-pB-Obu" id="UTb-KI-84J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iff-3W-ua7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="253" y="-332"/>
+            <point key="canvasLocation" x="325" y="-332"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
+        <scene sceneID="rsp-FH-ecX">
+            <objects>
+                <viewController storyboardIdentifier="DSSettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DvZ-TW-fLm" customClass="DSSettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="myK-vi-ATS"/>
+                        <viewControllerLayoutGuide type="bottom" id="M64-3Q-51a"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SvU-al-PK6">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9V6-zr-Uxd">
+                                <rect key="frame" x="20" y="100" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="DvZ-TW-fLm" id="ibs-q7-yJa"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9em-sb-Hh3">
+                                <rect key="frame" x="20" y="143" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="DvZ-TW-fLm" id="Pbx-gY-cmo"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Future Days to Sync" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6A-An-vp5">
+                                <rect key="frame" x="78" y="104" width="156" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Past Days to Sync" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9m7-cx-NZ4">
+                                <rect key="frame" x="78" y="146" width="141" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set how many days before and after today will be synchronized." lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="728" translatesAutoresizingMaskIntoConstraints="NO" id="yL1-7d-ks0">
+                                <rect key="frame" x="20" y="188" width="728" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="7oA-9X-u7Y">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="rFZ-68-kjN">
+                            <connections>
+                                <action selector="menuButtonPressed:" destination="DvZ-TW-fLm" id="VrY-ey-GdE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="futureDaysTextField" destination="9V6-zr-Uxd" id="w8b-u8-uvh"/>
+                        <outlet property="menuButtonPressed" destination="rFZ-68-kjN" id="teI-YO-inQ"/>
+                        <outlet property="pastDaysTextField" destination="9em-sb-Hh3" id="WSB-Gt-oeu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="12z-jT-Er3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="325" y="887"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="Nhz-Yw-n3C">
+            <objects>
+                <viewController storyboardIdentifier="DSAboutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3dh-w6-R4j" customClass="DSAboutViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="i0N-FV-OMc"/>
+                        <viewControllerLayoutGuide type="bottom" id="gfA-en-PYZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sso-1u-YIR">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFh-Vf-if0">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Vgi-Dz-sNT">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="Hrd-h9-qcV">
+                            <connections>
+                                <action selector="menuButtonPressed:" destination="3dh-w6-R4j" id="6rX-EL-XEA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuButtonPressed" destination="Hrd-h9-qcV" id="Rab-WW-zHu"/>
+                        <outlet property="textView" destination="nFh-Vf-if0" id="Uh1-LB-Kft"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1KP-39-ig7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="325" y="2130"/>
+        </scene>
+        <!--Menu View Controller-->
         <scene sceneID="U9P-c6-LKm">
             <objects>
-                <viewController id="Gme-AQ-a8l" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DSMenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gme-AQ-a8l" customClass="DSMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DP2-rE-ROP"/>
                         <viewControllerLayoutGuide type="bottom" id="sa2-Kn-E1G"/>
@@ -75,11 +212,12 @@
                     <view key="view" contentMode="scaleToFill" id="vg7-SA-7EU">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5EW-rO-Xh5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1583" y="897"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
