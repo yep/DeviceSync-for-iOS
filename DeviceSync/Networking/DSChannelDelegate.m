@@ -43,6 +43,9 @@
                 } else {
                     [self.mainViewController displayMessage:@"First, download 'DeviceSync for OS X' on your OS X computer from:\n"];
                     [self.mainViewController displayMessage:@"http://bit.ly/1ikPQmL"];
+                    [self.mainViewController displayMessage:@"or"];
+                    [self.mainViewController displayMessage:@"https://github.com/yep/DeviceSync-for-OS-X/releases"];
+
                     [self.mainViewController displayMessage:@"Latest version of 'DeviceSync for OS X' is 1.1"];
                     [self.mainViewController displayMessage:@"Then, plug in USB cable and launch 'DeviceSync for OS X' on your computer to start calendar synchronizaition."];
                 }

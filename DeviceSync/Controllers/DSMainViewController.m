@@ -45,6 +45,27 @@
 {
     [super viewDidLoad];
     self.outputTextView.text = @"";
+
+    // defaults
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"contactsSyncEnabled"] == nil ||
+        [[NSUserDefaults standardUserDefaults] objectForKey:@"calendarSyncEnabled"] == nil) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"contactsSyncEnabled"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"calendarSyncEnabled"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+
+    BOOL contactsSyncEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"contactsSyncEnabled"];
+    BOOL calendarSyncEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"calendarSyncEnabled"];
+    if (contactsSyncEnabled) {
+        self.contactsSwitch.on = YES;
+    } else {
+        self.contactsSwitch.on = NO;
+    }
+    if (calendarSyncEnabled) {
+        self.calendarSwitch.on = YES;
+    } else {
+        self.calendarSwitch.on = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,6 +78,8 @@
 {
     DLog(@"dealloc %p", self);
 }
+
+#pragma mark - ui
 
 - (void)displayMessage:(NSString *)message
 {
@@ -77,14 +100,30 @@
         [self displayMessage:@"Can not synchronize calendar: No USB connection."];
         [self displayMessage:@"Is the USB cable plugged in and is 'DeviceSync for OS X' running on your computer?"];
     } else {
-        [self displayMessage:@"Starting calendar synchronization."];
-        [self askForCalendarPermissions];
+        if (self.calendarSwitch.on) {
+            [self displayMessage:@"Starting calendar synchronization."];
+            [self askForCalendarPermissions];
+        } else if (self.contactsSwitch.on) {
+
+        } else {
+            [self displayMessage:@"Enable either contact or calendar synchronization."];
+        }
     }
 }
 
 - (IBAction)menuButtonPressed:(id)sender
 {
     [self.sideMenuViewController presentMenuViewController];
+}
+
+- (IBAction)switchValueChanged:(UISwitch *)sender {
+    if (sender == self.contactsSwitch) {
+        [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:@"contactsSyncEnabled"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    } else if (sender == self.calendarSwitch) {
+        [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:@"calendarSyncEnabled"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 #pragma mark - calendar
@@ -110,6 +149,7 @@
         [self displayMessage:@"No permissions to access calendar. Please enable calendar access in iOS settings."];
     } else {
         if (self.channelDelegate.peerChannel) {
+            self.outputTextView.dataDetectorTypes = UIDataDetectorTypeNone; // disable for performance
             [self exportEventStore:eventStore];
         } else {
             [self displayMessage:@"Can't export data. Not connected"];
@@ -156,6 +196,8 @@
         for (int i = 0; i < eventList.count; i++) {
             [self sendEvent:[eventList objectAtIndex:i]];
         }
+
+        self.outputTextView.dataDetectorTypes = UIDataDetectorTypeLink; // was disabled for performance
     }
 }
 

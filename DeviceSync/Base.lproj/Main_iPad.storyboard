@@ -42,7 +42,7 @@
         <!--Main View Controller-->
         <scene sceneID="mhu-pd-ATF">
             <objects>
-                <viewController storyboardIdentifier="DSMainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I8c-uJ-i2m" customClass="DSMainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DSMainViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I8c-uJ-i2m" customClass="DSMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fu1-cC-RWn"/>
                         <viewControllerLayoutGuide type="bottom" id="rpH-ED-ZAU"/>
@@ -52,20 +52,59 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="log" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKK-ne-3x8">
-                                <rect key="frame" x="-1" y="0.0" width="768" height="1024"/>
+                                <rect key="frame" x="-1" y="140" width="768" height="884"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <accessibility key="accessibilityConfiguration" label="Main View"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sbN-sO-h8C">
+                                <rect key="frame" x="20" y="88" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Contacts"/>
+                                <color key="onTintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <action selector="switchValueChanged:" destination="I8c-uJ-i2m" eventType="valueChanged" id="A5S-5z-ulj"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89I-Te-lTn">
+                                <rect key="frame" x="77" y="93" width="70" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xkz-qu-Tgv">
+                                <rect key="frame" x="191" y="88" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Calendar"/>
+                                <color key="onTintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <action selector="switchValueChanged:" destination="I8c-uJ-i2m" eventType="valueChanged" id="4U0-X9-hhT"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGv-hK-7A2">
+                                <rect key="frame" x="248" y="93" width="70" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="CKK-ne-3x8" firstAttribute="leading" secondItem="qmN-Dd-1Qc" secondAttribute="leading" constant="-1" id="GEU-a5-Jw9"/>
-                            <constraint firstAttribute="trailing" secondItem="CKK-ne-3x8" secondAttribute="trailing" constant="1" id="S82-W3-y8k"/>
-                            <constraint firstItem="CKK-ne-3x8" firstAttribute="top" secondItem="qmN-Dd-1Qc" secondAttribute="top" id="sB2-cg-hzn"/>
-                            <constraint firstAttribute="bottom" secondItem="CKK-ne-3x8" secondAttribute="bottom" id="w04-EO-Q8K"/>
+                            <constraint firstItem="89I-Te-lTn" firstAttribute="leading" secondItem="sbN-sO-h8C" secondAttribute="trailing" constant="8" symbolic="YES" id="12e-Er-z02"/>
+                            <constraint firstItem="xGv-hK-7A2" firstAttribute="baseline" secondItem="89I-Te-lTn" secondAttribute="baseline" id="19Q-9P-chd"/>
+                            <constraint firstAttribute="trailing" secondItem="CKK-ne-3x8" secondAttribute="trailing" constant="1" id="2Cg-Ha-nCA"/>
+                            <constraint firstItem="Xkz-qu-Tgv" firstAttribute="leading" secondItem="89I-Te-lTn" secondAttribute="trailing" constant="44" id="CAd-TF-FwB"/>
+                            <constraint firstItem="sbN-sO-h8C" firstAttribute="leading" secondItem="qmN-Dd-1Qc" secondAttribute="leading" constant="20" symbolic="YES" id="R91-W1-KvA"/>
+                            <constraint firstItem="sbN-sO-h8C" firstAttribute="top" secondItem="Xkz-qu-Tgv" secondAttribute="top" id="Udg-Fy-Zw2"/>
+                            <constraint firstAttribute="bottom" secondItem="CKK-ne-3x8" secondAttribute="bottom" id="Wlh-RB-6Kr"/>
+                            <constraint firstItem="CKK-ne-3x8" firstAttribute="leading" secondItem="qmN-Dd-1Qc" secondAttribute="leading" constant="-1" id="d4j-0b-wql"/>
+                            <constraint firstItem="89I-Te-lTn" firstAttribute="centerY" secondItem="sbN-sO-h8C" secondAttribute="centerY" id="fdm-l4-cLn"/>
+                            <constraint firstItem="xGv-hK-7A2" firstAttribute="leading" secondItem="Xkz-qu-Tgv" secondAttribute="trailing" constant="8" symbolic="YES" id="gE2-SI-yJB"/>
+                            <constraint firstItem="sbN-sO-h8C" firstAttribute="top" secondItem="fu1-cC-RWn" secondAttribute="bottom" constant="24" id="hq9-Lq-rdi"/>
+                            <constraint firstItem="CKK-ne-3x8" firstAttribute="top" secondItem="sbN-sO-h8C" secondAttribute="bottom" constant="21" id="r0F-Ur-jqP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ob0-Mb-g5g">
@@ -81,6 +120,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="calendarSwitch" destination="Xkz-qu-Tgv" id="86W-sV-lnG"/>
+                        <outlet property="contactsSwitch" destination="sbN-sO-h8C" id="WN9-Hh-Zf4"/>
                         <outlet property="menuButtonPressed" destination="5iJ-cC-eog" id="wo0-41-BOx"/>
                         <outlet property="outputTextView" destination="CKK-ne-3x8" id="Y5o-pM-oQP"/>
                         <outlet property="syncButtonPressed" destination="doH-pB-Obu" id="UTb-KI-84J"/>

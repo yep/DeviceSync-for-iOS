@@ -32,6 +32,8 @@
 @property (weak) IBOutlet UITextView *outputTextView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButtonPressed;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *syncButtonPressed;
+@property (weak, nonatomic) IBOutlet UISwitch *contactsSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *calendarSwitch;
 
 @property (nonatomic, strong) DSChannelDelegate *channelDelegate;
 
