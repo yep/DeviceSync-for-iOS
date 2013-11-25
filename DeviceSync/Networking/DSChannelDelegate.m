@@ -116,7 +116,7 @@
     self.peerChannel.userInfo = address;
     [self.mainViewController displayMessage:@"USB connection to 'DeviceSync for OS X' established."];
     [self.mainViewController displayMessage:@"Now press the 'Sync' button above."];
-    [self.mainViewController displayMessage:@"ONCE AGAIN: ALL CALENDAR DATA ON YOUR OS X DEVICE WILL BE DELETED AND EVENTS FROM IOS WILL BE COPIED TO OS X!"];
+    [self.mainViewController displayMessage:@"ONCE AGAIN: ALL DATA ON YOUR OS X DEVICE WILL BE DELETED AND REPLACED WITH DATA FROM IOS!"];
 
     // send some information about ourselves to the other end
     [self sendDeviceInfo];

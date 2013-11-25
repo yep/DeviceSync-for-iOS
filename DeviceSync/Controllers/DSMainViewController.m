@@ -25,6 +25,7 @@
 //
 
 #import <EventKit/EventKit.h>
+#import <AddressBookUI/AddressBookUI.h>
 #import "RESideMenu.h"
 #import "DSMainViewController.h"
 #import "DSProtocol.h"
@@ -100,13 +101,17 @@
         [self displayMessage:@"Can not synchronize calendar: No USB connection."];
         [self displayMessage:@"Is the USB cable plugged in and is 'DeviceSync for OS X' running on your computer?"];
     } else {
-        if (self.calendarSwitch.on) {
-            [self displayMessage:@"Starting calendar synchronization."];
-            [self askForCalendarPermissions];
-        } else if (self.contactsSwitch.on) {
-
+        if (!self.calendarSwitch.on && !self.contactsSwitch.on) {
+            [self displayMessage:@"Either enable contact or calendar synchronization."];
         } else {
-            [self displayMessage:@"Enable either contact or calendar synchronization."];
+            if (self.calendarSwitch.on) {
+                [self displayMessage:@"Starting calendar synchronization."];
+                [self askForCalendarPermissions];
+            }
+            if (self.contactsSwitch.on) {
+                [self displayMessage:@"Starting contacts synchronization."];
+                [self askForContactsPermissions];
+            }
         }
     }
 }
@@ -159,6 +164,8 @@
 
 - (void)exportEventStore:(EKEventStore *)eventStore
 {
+    self.outputTextView.dataDetectorTypes = UIDataDetectorTypeNone; // disable for performance
+
     NSArray *calendars = [eventStore calendarsForEntityType:EKEntityTypeEvent];
 
     for (EKCalendar *calendar in calendars) {
@@ -173,6 +180,8 @@
         // sync range
         NSInteger futureDays = [[NSUserDefaults standardUserDefaults] integerForKey:@"futureDays"];
         NSInteger pastDays = [[NSUserDefaults standardUserDefaults] integerForKey:@"pastDays"];
+        DLog(@"past days=%ld", (long)pastDays);
+        DLog(@"future days=%ld", (long)futureDays);
 
         NSDateComponents *futureDaysComponent = [[NSDateComponents alloc] init];
         futureDaysComponent.day = futureDays;
@@ -199,6 +208,58 @@
     }
 }
 
+#pragma mark - contacts
+
+- (void)askForContactsPermissions
+{
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+    __block BOOL accessGranted = NO;
+
+    if (ABAddressBookRequestAccessWithCompletion != NULL) {
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+            accessGranted = granted;
+            dispatch_semaphore_signal(semaphore);
+        });
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    }
+    else {
+        // ios 5 or older
+        accessGranted = YES;
+    }
+
+    if (!accessGranted) {
+        [self displayMessage:@"No permissions to access contacts. Please enable contacts access in iOS settings."];
+    } else {
+        if (self.channelDelegate.peerChannel) {
+            [self exportAddressBook:addressBook];
+        } else {
+            [self displayMessage:@"Can't export data. Not connected"];
+        }
+    }
+}
+
+- (void)exportAddressBook:(ABAddressBookRef)addressBook
+{
+    CFArrayRef peopleArrayRef = ABAddressBookCopyArrayOfAllPeople(addressBook);
+    NSArray *people = (__bridge NSArray *)peopleArrayRef;
+
+    for (NSInteger i = 0; i < people.count; i++)
+    {
+        [self displayMessage:[NSString stringWithFormat:@"Sending contact %ld of %lu.", (long)(i + 1), (unsigned long)people.count]];
+
+        NSArray *person = @[people[i]];
+        CFArrayRef personRef = (__bridge CFArrayRef)person;
+        NSData *vCard = (NSData *)CFBridgingRelease(ABPersonCreateVCardRepresentationWithPeople(personRef));
+
+        if (i == 0) {
+            [self sendContact:vCard first:YES];
+        } else {
+            [self sendContact:vCard first:NO];
+        }
+    }
+}
+
 #pragma mark - communication
 
 - (void)sendCalendar:(EKCalendar *)calendar
@@ -209,7 +270,7 @@
 
     [self.channelDelegate.peerChannel sendFrameOfType:DSDeviceSyncFrameTypeCalendar tag:PTFrameNoTag withPayload:payload callback:^(NSError *error) {
         if (error) {
-            NSLog(@"Failed to send DSDeviceSyncFrameTypeCalendar: %@", error);
+            NSLog(@"Failed to send calendar: %@", error);
         }
     }];
 }
@@ -225,8 +286,26 @@
         }
     }];
 
-    [self displayMessage:[NSString stringWithFormat:@"Sending event '%@'", event.title]];
+    [self displayMessage:[NSString stringWithFormat:@"Sending event '%@'.", event.title]];
 }
 
+- (void)sendContact:(NSData *)vCard first:(BOOL)first
+{
+    dispatch_data_t payload = DSDeviceSyncDispatchData(vCard);
+
+    // indicate if this is the first contact
+    uint32_t tag;
+    if (first) {
+        tag = DSFrameIsFirstTag;
+    } else {
+        tag = PTFrameNoTag;
+    }
+
+    [self.channelDelegate.peerChannel sendFrameOfType:DSDeviceSyncFrameTypeContact tag:tag withPayload:payload callback:^(NSError *error) {
+        if (error) {
+            NSLog(@"Failed to send contact: %@", error);
+        }
+    }];
+}
 
 @end

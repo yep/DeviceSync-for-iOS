@@ -31,6 +31,7 @@
 		170EC8831838FBFA00CAEE1E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170BCC3A18317510000059F5 /* UIKit.framework */; };
 		170EC8891838FBFA00CAEE1E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 170EC8871838FBFA00CAEE1E /* InfoPlist.strings */; };
 		170EC88B1838FBFA00CAEE1E /* IntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC88A1838FBFA00CAEE1E /* IntegrationTests.m */; };
+		174560AA18436FAF00E6C663 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174560A918436FAF00E6C663 /* AddressBook.framework */; };
 		1782591E18390DDA006C570E /* DSSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1782591D18390DDA006C570E /* DSSettingsViewController.m */; };
 		1782591F18390DDA006C570E /* DSSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1782591D18390DDA006C570E /* DSSettingsViewController.m */; };
 		1782592218390E42006C570E /* DSAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1782592118390E42006C570E /* DSAboutViewController.m */; };
@@ -98,6 +99,7 @@
 		170EC8881838FBFA00CAEE1E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		170EC88A1838FBFA00CAEE1E /* IntegrationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntegrationTests.m; sourceTree = "<group>"; };
 		170EC88C1838FBFA00CAEE1E /* IntegrationTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IntegrationTests-Prefix.pch"; sourceTree = "<group>"; };
+		174560A918436FAF00E6C663 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		1782591C18390DDA006C570E /* DSSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSettingsViewController.h; sourceTree = "<group>"; };
 		1782591D18390DDA006C570E /* DSSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSSettingsViewController.m; sourceTree = "<group>"; };
 		1782592018390E42006C570E /* DSAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSAboutViewController.h; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				174560AA18436FAF00E6C663 /* AddressBook.framework in Frameworks */,
 				170BCC3918317510000059F5 /* CoreGraphics.framework in Frameworks */,
 				170BCC3B18317510000059F5 /* UIKit.framework in Frameworks */,
 				170BCC3718317510000059F5 /* Foundation.framework in Frameworks */,
@@ -178,6 +181,7 @@
 		170BCC3518317510000059F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				174560A918436FAF00E6C663 /* AddressBook.framework */,
 				170BCC3618317510000059F5 /* Foundation.framework */,
 				170BCC3818317510000059F5 /* CoreGraphics.framework */,
 				170BCC3A18317510000059F5 /* UIKit.framework */,

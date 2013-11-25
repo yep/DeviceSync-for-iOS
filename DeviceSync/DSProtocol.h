@@ -35,7 +35,9 @@
 // at time of writing
 static const int DSProtocolIPv4PortNumber = 51515;
 
-enum {
+static const uint32_t DSFrameIsFirstTag = 1;
+
+enum DSDeviceSyncFrameType {
     DSDeviceSyncFrameTypeDeviceInfo = 100,
     DSDeviceSyncFrameTypePing = 101,
     DSDeviceSyncFrameTypePong = 102,
@@ -54,7 +56,7 @@ typedef struct _DSDeviceSyncFrame {
 static dispatch_data_t DSDeviceSyncDispatchData(NSData *data)
 {
     size_t length = data.length;
-    DSDeviceSyncFrame *frame = CFAllocatorAllocate(nil, sizeof(DSDeviceSyncFrameTypeEvent) + length, 0);
+    DSDeviceSyncFrame *frame = CFAllocatorAllocate(nil, sizeof(DSDeviceSyncFrame) + length, 0);
 
     memcpy(frame->data, data.bytes, length); // copy bytes to event array of DSDeviceSyncFrame stuct
     frame->length = htonl(length); // convert integer to network byte order
