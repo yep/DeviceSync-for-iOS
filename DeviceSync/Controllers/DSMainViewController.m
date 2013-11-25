@@ -173,8 +173,6 @@
         // sync range
         NSInteger futureDays = [[NSUserDefaults standardUserDefaults] integerForKey:@"futureDays"];
         NSInteger pastDays = [[NSUserDefaults standardUserDefaults] integerForKey:@"pastDays"];
-        DLog(@"past days=%ld", (long)pastDays);
-        DLog(@"future days=%ld", (long)futureDays);
 
         NSDateComponents *futureDaysComponent = [[NSDateComponents alloc] init];
         futureDaysComponent.day = futureDays;

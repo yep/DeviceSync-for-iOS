@@ -79,9 +79,9 @@
 {
     //DLog(@"didReceiveFrameOfType: %u, %u, %@", type, tag, payload);
     if (type == DSDeviceSyncFrameTypeEvent) {
-        DSDeviceSyncEventFrame *eventFrame = (DSDeviceSyncEventFrame *)payload.data;
+        DSDeviceSyncFrame *eventFrame = (DSDeviceSyncFrame *)payload.data;
         eventFrame->length = ntohl(eventFrame->length);
-        NSString *message = [[NSString alloc] initWithBytes:eventFrame->event length:eventFrame->length encoding:NSUTF8StringEncoding];
+        NSString *message = [[NSString alloc] initWithBytes:eventFrame->data length:eventFrame->length encoding:NSUTF8StringEncoding];
         [self.mainViewController displayMessage:[NSString stringWithFormat:@"[%@]: %@", channel.userInfo, message]];
     } else if (type == DSDeviceSyncFrameTypePing && self.peerChannel) {
         [self.peerChannel sendFrameOfType:DSDeviceSyncFrameTypePong tag:tag withPayload:nil callback:nil];
