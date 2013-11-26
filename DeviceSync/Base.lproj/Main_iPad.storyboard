@@ -110,21 +110,21 @@
                     <navigationItem key="navigationItem" id="Ob0-Mb-g5g">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="5iJ-cC-eog">
                             <connections>
-                                <action selector="menuButtonPressed:" destination="I8c-uJ-i2m" id="WKh-4g-YjK"/>
+                                <action selector="menuButtonPressed:" destination="I8c-uJ-i2m" id="Kgv-Vg-SSV"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Sync" id="doH-pB-Obu">
                             <connections>
-                                <action selector="syncButtonPressed:" destination="I8c-uJ-i2m" id="FrE-Bs-xfq"/>
+                                <action selector="syncButtonPressed:" destination="I8c-uJ-i2m" id="EIl-il-oa3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="calendarSwitch" destination="Xkz-qu-Tgv" id="86W-sV-lnG"/>
                         <outlet property="contactsSwitch" destination="sbN-sO-h8C" id="WN9-Hh-Zf4"/>
-                        <outlet property="menuButtonPressed" destination="5iJ-cC-eog" id="wo0-41-BOx"/>
+                        <outlet property="menuButton" destination="5iJ-cC-eog" id="JMG-td-aG0"/>
                         <outlet property="outputTextView" destination="CKK-ne-3x8" id="Y5o-pM-oQP"/>
-                        <outlet property="syncButtonPressed" destination="doH-pB-Obu" id="UTb-KI-84J"/>
+                        <outlet property="syncButton" destination="doH-pB-Obu" id="5IL-jD-n9f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iff-3W-ua7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,14 +188,13 @@
                     <navigationItem key="navigationItem" id="7oA-9X-u7Y">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="rFZ-68-kjN">
                             <connections>
-                                <action selector="menuButtonPressed:" destination="DvZ-TW-fLm" id="VrY-ey-GdE"/>
+                                <action selector="menuButtonPressed:" destination="DvZ-TW-fLm" id="egW-zr-KW5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="futureDaysTextField" destination="9V6-zr-Uxd" id="w8b-u8-uvh"/>
-                        <outlet property="menuButtonPressed" destination="rFZ-68-kjN" id="teI-YO-inQ"/>
                         <outlet property="pastDaysTextField" destination="9em-sb-Hh3" id="WSB-Gt-oeu"/>
                     </connections>
                 </viewController>
@@ -229,12 +228,11 @@
                     <navigationItem key="navigationItem" id="Vgi-Dz-sNT">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="Hrd-h9-qcV">
                             <connections>
-                                <action selector="menuButtonPressed:" destination="3dh-w6-R4j" id="6rX-EL-XEA"/>
+                                <action selector="menuButtonPressed:" destination="3dh-w6-R4j" id="G2P-5v-iFr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="menuButtonPressed" destination="Hrd-h9-qcV" id="Rab-WW-zHu"/>
                         <outlet property="textView" destination="nFh-Vf-if0" id="Uh1-LB-Kft"/>
                     </connections>
                 </viewController>

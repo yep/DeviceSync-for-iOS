@@ -37,6 +37,8 @@
 
 @implementation DSMainViewController
 
+#pragma mark - view controller lifecycle
+
 - (void)awakeFromNib
 {
     DLog(@"awakeFromNib %p", self);
@@ -45,7 +47,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.outputTextView.text = @"";
 
     // defaults
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"contactsSyncEnabled"] == nil ||
@@ -55,18 +56,15 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
 
-    BOOL contactsSyncEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"contactsSyncEnabled"];
-    BOOL calendarSyncEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:@"calendarSyncEnabled"];
-    if (contactsSyncEnabled) {
-        self.contactsSwitch.on = YES;
-    } else {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"contactsSyncEnabled"]) {
         self.contactsSwitch.on = NO;
     }
-    if (calendarSyncEnabled) {
-        self.calendarSwitch.on = YES;
-    } else {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"calendarSyncEnabled"]) {
         self.calendarSwitch.on = NO;
     }
+
+    self.outputTextView.text = @"";
+    self.syncButton.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -293,7 +291,7 @@
 {
     dispatch_data_t payload = DSDeviceSyncDispatchData(vCard);
 
-    // indicate if this is the first contact
+    // indicate if this is the first contact sent in this sync
     uint32_t tag;
     if (first) {
         tag = DSFrameIsFirstTag;

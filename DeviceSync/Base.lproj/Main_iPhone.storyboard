@@ -119,21 +119,21 @@
                     <navigationItem key="navigationItem" id="Kk9-eC-3rC">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="RlG-0C-jIB">
                             <connections>
-                                <action selector="menuButtonPressed:" destination="h0q-k0-rMn" id="pV2-yg-5xR"/>
+                                <action selector="menuButtonPressed:" destination="h0q-k0-rMn" id="nF4-S9-D3J"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Sync" id="QrL-bd-1Mx">
                             <connections>
-                                <action selector="syncButtonPressed:" destination="h0q-k0-rMn" id="2vH-7B-lqn"/>
+                                <action selector="syncButtonPressed:" destination="h0q-k0-rMn" id="bla-Oe-r4a"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="calendarSwitch" destination="LOC-bP-1Qx" id="CrY-Zc-byt"/>
                         <outlet property="contactsSwitch" destination="vOc-af-Mk8" id="a3Z-cr-kog"/>
-                        <outlet property="menuButtonPressed" destination="RlG-0C-jIB" id="FnM-im-uAm"/>
+                        <outlet property="menuButton" destination="RlG-0C-jIB" id="RhU-8s-GGr"/>
                         <outlet property="outputTextView" destination="Qmg-Nl-57d" id="svi-te-Oar"/>
-                        <outlet property="syncButtonPressed" destination="QrL-bd-1Mx" id="06V-SN-MLK"/>
+                        <outlet property="syncButton" destination="QrL-bd-1Mx" id="VtF-qS-9mY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGz-t3-4cV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -214,7 +214,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="1ta-fY-wrC">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="c5a-Kv-m1r">
                             <connections>
-                                <action selector="menuButtonPressed:" destination="P5p-Lw-gKE" id="4zC-yB-Sf0"/>
+                                <action selector="menuButtonPressed:" destination="P5p-Lw-gKE" id="6n5-rH-Doh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -241,12 +241,11 @@
                     <navigationItem key="navigationItem" title="About" id="Gp3-F2-jvS">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="2UU-62-jQX">
                             <connections>
-                                <action selector="menuButtonPressed:" destination="0No-MS-b4o" id="IJD-W1-bul"/>
+                                <action selector="menuButtonPressed:" destination="0No-MS-b4o" id="LVz-ol-96g"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="menuButtonPressed" destination="2UU-62-jQX" id="WgN-sA-8e8"/>
                         <outlet property="textView" destination="M0a-DA-OdO" id="Tau-oH-5gy"/>
                     </connections>
                 </viewController>

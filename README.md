@@ -10,12 +10,14 @@ Install
 
 Download 'DeviceSync for OS X' as zip file from [github release page](https://github.com/yep/DeviceSync-for-OS-X/releases).
 
+Download 'DeviceSync for iOS' from the [iOS AppStore](https://itunes.apple.com/de/app/devicesync-for-ios/id737867459?mt=8)
+
 Usage
 -----
 
  * Connect your iOS and OS X device to each other by USB
  * Start [DeviceSync for OS X](https://github.com/yep/DeviceSync-for-OS-X) on OS X
- * Start [DeviceSync for iOS](https://github.com/yep/DeviceSync-for-iOS) on iOS
+ * Start [DeviceSync for iOS](https://itunes.apple.com/de/app/devicesync-for-ios/id737867459?mt=8) on iOS
  * Press 'Sync' button in 'DeviceSync for iOS' to start synchronization
 
 WARNING
@@ -23,16 +25,16 @@ WARNING
 
 Synchronization is currently one way: from iOS to OS X.
 
-ALL CALENDAR DATA ON YOUR OS X DEVICE WILL BE OVERWRITTEN!
+ALL DATA ON YOUR OS X DEVICE WILL BE OVERWRITTEN!
 
 No warranty for data loss.
 
-Be sure to add and update your calendar entries on iOS only.
+Be sure to add and update your calendar entries and contacts on iOS only.
 
 Roadmap
 -------
 
-As time permits, I will add support for contact synchronization and improve merging behavior of calendar entries.
+As time permits, I will improve merging behavior of calendar entries and contacts.
 
 For feature requests, please add an issue at github's [issue tracker](https://github.com/yep/DeviceSync-for-iOS/issues).
 
