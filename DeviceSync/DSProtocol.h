@@ -35,32 +35,35 @@
 // at time of writing
 static const int DSProtocolIPv4PortNumber = 51515;
 
-enum {
+static const uint32_t DSFrameIsFirstTag = 1;
+
+enum DSDeviceSyncFrameType {
     DSDeviceSyncFrameTypeDeviceInfo = 100,
     DSDeviceSyncFrameTypePing = 101,
     DSDeviceSyncFrameTypePong = 102,
     DSDeviceSyncFrameTypeCalendar = 103,
     DSDeviceSyncFrameTypeEvent = 104,
+    DSDeviceSyncFrameTypeContact = 105,
 };
 
-typedef struct _DSDeviceSyncEventFrame {
+typedef struct _DSDeviceSyncFrame {
     uint32_t length;
-    uint8_t event[0];
-} DSDeviceSyncEventFrame;
+    uint8_t data[0];
+} DSDeviceSyncFrame;
 
 // prepare data to be sent data over usb
-#pragma clang diagnostic ignored "-Wunused-function" // it is used, it's static. disable warning about being unused.
+#pragma clang diagnostic ignored "-Wunused-function" // disable warning about DSDeviceSyncDispatchData being unused.
 static dispatch_data_t DSDeviceSyncDispatchData(NSData *data)
 {
     size_t length = data.length;
-    DSDeviceSyncEventFrame *eventFrame = CFAllocatorAllocate(nil, sizeof(DSDeviceSyncFrameTypeEvent) + length, 0);
+    DSDeviceSyncFrame *frame = CFAllocatorAllocate(nil, sizeof(DSDeviceSyncFrame) + length, 0);
 
-    memcpy(eventFrame->event, data.bytes, length); // copy bytes to event array of DSDeviceSyncEventFrame stuct
-    eventFrame->length = htonl(length); // convert integer to network byte order
+    memcpy(frame->data, data.bytes, length); // copy bytes to event array of DSDeviceSyncFrame stuct
+    frame->length = htonl(length); // convert integer to network byte order
 
     // wrap the eventFrame in a dispatch data object
-    return dispatch_data_create((const void *)eventFrame, sizeof(DSDeviceSyncEventFrame) + length, nil, ^{
-        CFAllocatorDeallocate(nil, eventFrame);
+    return dispatch_data_create((const void *)frame, sizeof(DSDeviceSyncFrame) + length, nil, ^{
+        CFAllocatorDeallocate(nil, frame);
     });
 }
 

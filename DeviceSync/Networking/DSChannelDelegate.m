@@ -43,14 +43,39 @@
                 } else {
                     [self.mainViewController displayMessage:@"First, download 'DeviceSync for OS X' on your OS X computer from:\n"];
                     [self.mainViewController displayMessage:@"http://bit.ly/1ikPQmL"];
-                    [self.mainViewController displayMessage:@"Latest version of 'DeviceSync for OS X' is 1.1"];
-                    [self.mainViewController displayMessage:@"Then, plug in USB cable and launch 'DeviceSync for OS X' on your computer to start calendar synchronizaition."];
+                    [self.mainViewController displayMessage:@"or"];
+                    [self.mainViewController displayMessage:@"https://github.com/yep/DeviceSync-for-OS-X/releases"];
+
+                    [self.mainViewController displayMessage:@"Then, plug in USB cable and launch 'DeviceSync for OS X' on your computer to start synchronizaition."];
                 }
             }];
 
         }
     }
     return self;
+}
+
+#pragma mark - device info
+
+- (void)sendDeviceInfo
+{
+    if (!self.peerChannel) {
+        return;
+    }
+
+    DLog(@"Sending device info over %@", self.peerChannel);
+    UIDevice *device = [UIDevice currentDevice];
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSDictionary *info = @{@"name": device.name,
+                           @"systemName": device.systemName,
+                           @"systemVersion": device.systemVersion,
+                           @"version": version};
+    dispatch_data_t payload = [info createReferencingDispatchData];
+    [self.peerChannel sendFrameOfType:DSDeviceSyncFrameTypeDeviceInfo tag:PTFrameNoTag withPayload:payload callback:^(NSError *error) {
+        if (error) {
+            [self.mainViewController displayMessage:[NSString stringWithFormat:@"Failed to send DSDeviceSyncFrameTypeDeviceInfo: %@", error]];
+        }
+    }];
 }
 
 #pragma mark - PTChannelDelegate
@@ -62,7 +87,10 @@
     if (channel != self.peerChannel) {
         // a previous channel that has been canceled but not yet ended. ignore.
         return NO;
-    } else if (type != DSDeviceSyncFrameTypeCalendar && type != DSDeviceSyncFrameTypeEvent && type != DSDeviceSyncFrameTypePing) {
+    } else if (type != DSDeviceSyncFrameTypeCalendar &&
+               type != DSDeviceSyncFrameTypeEvent &&
+               type != DSDeviceSyncFrameTypePing &&
+               type != DSDeviceSyncFrameTypeDeviceInfo) {
         NSLog(@"Unexpected frame of type %u", type);
         [channel close];
         return NO;
@@ -75,10 +103,19 @@
 - (void)ioFrameChannel:(PTChannel *)channel didReceiveFrameOfType:(uint32_t)type tag:(uint32_t)tag payload:(PTData *)payload
 {
     //DLog(@"didReceiveFrameOfType: %u, %u, %@", type, tag, payload);
-    if (type == DSDeviceSyncFrameTypeEvent) {
-        DSDeviceSyncEventFrame *eventFrame = (DSDeviceSyncEventFrame *)payload.data;
+
+    if (type == DSDeviceSyncFrameTypeDeviceInfo) {
+        NSDictionary *deviceInfo = [NSDictionary dictionaryWithContentsOfDispatchData:payload.dispatchData];
+        [self.mainViewController displayMessage:[NSString stringWithFormat:@"Connected to 'DeviceSync for OS X' version %@", deviceInfo[@"version"]]];
+        [self.mainViewController displayMessage:@"Now press the 'Sync' button above."];
+        [self.mainViewController displayMessage:@"ONCE AGAIN: ALL DATA ON YOUR OS X DEVICE WILL BE DELETED AND REPLACED WITH DATA FROM IOS!"];
+
+        self.connected = YES;
+        self.mainViewController.syncButton.enabled = YES;
+    } else if (type == DSDeviceSyncFrameTypeEvent) {
+        DSDeviceSyncFrame *eventFrame = (DSDeviceSyncFrame *)payload.data;
         eventFrame->length = ntohl(eventFrame->length);
-        NSString *message = [[NSString alloc] initWithBytes:eventFrame->event length:eventFrame->length encoding:NSUTF8StringEncoding];
+        NSString *message = [[NSString alloc] initWithBytes:eventFrame->data length:eventFrame->length encoding:NSUTF8StringEncoding];
         [self.mainViewController displayMessage:[NSString stringWithFormat:@"[%@]: %@", channel.userInfo, message]];
     } else if (type == DSDeviceSyncFrameTypePing && self.peerChannel) {
         [self.peerChannel sendFrameOfType:DSDeviceSyncFrameTypePong tag:tag withPayload:nil callback:nil];
@@ -111,39 +148,10 @@
     // (owned by its parent dispatch queue) until they are closed
     self.peerChannel = otherChannel;
     self.peerChannel.userInfo = address;
-    [self.mainViewController displayMessage:@"USB connection to 'DeviceSync for OS X' established."];
-    [self.mainViewController displayMessage:@"Now press the 'Sync' button above."];
-    [self.mainViewController displayMessage:@"ONCE AGAIN: ALL CALENDAR DATA ON YOUR OS X DEVICE WILL BE DELETED AND EVENTS FROM IOS WILL BE COPIED TO OS X!"];
+    [self.mainViewController displayMessage:@"You have to update 'Device Sync for OS X' if the 'Sync' button does not get enabled."];
 
     // send some information about ourselves to the other end
     [self sendDeviceInfo];
-
-    self.connected = YES;
 }
-
-#pragma mark - 
-
-- (void)sendDeviceInfo
-{
-    if (!self.peerChannel) {
-        return;
-    }
-
-    DLog(@"Sending device info over %@", self.peerChannel);
-    UIDevice *device = [UIDevice currentDevice];
-    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
-                          device.name, @"name",
-                          device.systemName, @"systemName",
-                          device.systemVersion, @"systemVersion",
-                          nil];
-    dispatch_data_t payload = [info createReferencingDispatchData];
-    [self.peerChannel sendFrameOfType:DSDeviceSyncFrameTypeDeviceInfo tag:PTFrameNoTag withPayload:payload callback:^(NSError *error) {
-        if (error) {
-            [self.mainViewController displayMessage:[NSString stringWithFormat:@"Failed to send DSDeviceSyncFrameTypeDeviceInfo: %@", error]];
-        }
-    }];
-}
-
-
 
 @end

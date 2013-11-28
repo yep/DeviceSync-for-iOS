@@ -42,7 +42,7 @@
         <!--Main View Controller-->
         <scene sceneID="XRk-Ur-ixN">
             <objects>
-                <viewController storyboardIdentifier="DSMainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h0q-k0-rMn" customClass="DSMainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DSMainViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h0q-k0-rMn" customClass="DSMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="30s-re-bHj"/>
                         <viewControllerLayoutGuide type="bottom" id="mQL-n1-58E"/>
@@ -51,41 +51,89 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="log" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmg-Nl-57d">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="log" translatesAutoresizingMaskIntoConstraints="NO" id="Qmg-Nl-57d">
+                                <rect key="frame" x="0.0" y="133" width="320" height="435"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" label="Log"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vOc-af-Mk8">
+                                <rect key="frame" x="20" y="84" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Contacts"/>
+                                <color key="onTintColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <action selector="endedit:" destination="h0q-k0-rMn" eventType="editingDidEnd" id="R6Q-xq-eNl"/>
+                                    <action selector="switchValueChanged:" destination="h0q-k0-rMn" eventType="valueChanged" id="7le-cb-owv"/>
+                                </connections>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LOC-bP-1Qx">
+                                <rect key="frame" x="173" y="84" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Calendar"/>
+                                <color key="onTintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <action selector="switchValueChanged:" destination="h0q-k0-rMn" eventType="valueChanged" id="Dwq-ij-Ze1"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLr-mC-RjK">
+                                <rect key="frame" x="77" y="89" width="77" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erH-uN-ZlP">
+                                <rect key="frame" x="230" y="89" width="70" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Ylo-j8-TO1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <accessibility key="accessibilityConfiguration" label="Main View">
                             <bool key="isElement" value="YES"/>
                         </accessibility>
                         <constraints>
-                            <constraint firstItem="Qmg-Nl-57d" firstAttribute="leading" secondItem="G9X-uM-79g" secondAttribute="leading" id="GMB-5l-6O7"/>
-                            <constraint firstAttribute="trailing" secondItem="Qmg-Nl-57d" secondAttribute="trailing" id="Hdz-Sz-fsH"/>
-                            <constraint firstItem="Qmg-Nl-57d" firstAttribute="top" secondItem="G9X-uM-79g" secondAttribute="top" id="W9Z-P8-Puq"/>
-                            <constraint firstAttribute="bottom" secondItem="Qmg-Nl-57d" secondAttribute="bottom" id="XIE-67-vcb"/>
+                            <constraint firstItem="LOC-bP-1Qx" firstAttribute="centerY" secondItem="erH-uN-ZlP" secondAttribute="centerY" id="00Z-rB-Nzi"/>
+                            <constraint firstItem="Qmg-Nl-57d" firstAttribute="leading" secondItem="G9X-uM-79g" secondAttribute="leading" id="4My-hN-yVE"/>
+                            <constraint firstItem="uLr-mC-RjK" firstAttribute="baseline" secondItem="erH-uN-ZlP" secondAttribute="baseline" id="I4K-rm-zNf"/>
+                            <constraint firstItem="vOc-af-Mk8" firstAttribute="leading" secondItem="G9X-uM-79g" secondAttribute="leading" constant="20" symbolic="YES" id="Mnr-Ly-yUa"/>
+                            <constraint firstItem="uLr-mC-RjK" firstAttribute="leading" secondItem="vOc-af-Mk8" secondAttribute="trailing" constant="8" symbolic="YES" id="PbV-KY-gag"/>
+                            <constraint firstItem="vOc-af-Mk8" firstAttribute="top" secondItem="30s-re-bHj" secondAttribute="bottom" constant="20" id="Q8J-E2-ESj"/>
+                            <constraint firstAttribute="trailing" secondItem="Qmg-Nl-57d" secondAttribute="trailing" id="QV0-pZ-9U1"/>
+                            <constraint firstItem="Qmg-Nl-57d" firstAttribute="top" secondItem="vOc-af-Mk8" secondAttribute="bottom" constant="18" id="aRh-6Y-j9K"/>
+                            <constraint firstItem="vOc-af-Mk8" firstAttribute="top" secondItem="LOC-bP-1Qx" secondAttribute="top" id="dSq-8P-fDM"/>
+                            <constraint firstItem="erH-uN-ZlP" firstAttribute="leading" secondItem="LOC-bP-1Qx" secondAttribute="trailing" constant="8" symbolic="YES" id="g7z-F1-IZS"/>
+                            <constraint firstAttribute="bottom" secondItem="Qmg-Nl-57d" secondAttribute="bottom" id="jwF-i0-ALo"/>
+                            <constraint firstItem="LOC-bP-1Qx" firstAttribute="leading" secondItem="uLr-mC-RjK" secondAttribute="trailing" constant="19" id="pE3-5l-OSy"/>
+                            <constraint firstAttribute="trailing" secondItem="erH-uN-ZlP" secondAttribute="trailing" constant="20" symbolic="YES" id="rKT-Bp-juq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Kk9-eC-3rC">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="RlG-0C-jIB">
                             <connections>
-                                <action selector="menuButtonPressed:" destination="h0q-k0-rMn" id="pV2-yg-5xR"/>
+                                <action selector="menuButtonPressed:" destination="h0q-k0-rMn" id="nF4-S9-D3J"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Sync" id="QrL-bd-1Mx">
                             <connections>
-                                <action selector="syncButtonPressed:" destination="h0q-k0-rMn" id="2vH-7B-lqn"/>
+                                <action selector="syncButtonPressed:" destination="h0q-k0-rMn" id="bla-Oe-r4a"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="menuButtonPressed" destination="RlG-0C-jIB" id="FnM-im-uAm"/>
+                        <outlet property="calendarSwitch" destination="LOC-bP-1Qx" id="CrY-Zc-byt"/>
+                        <outlet property="contactsSwitch" destination="vOc-af-Mk8" id="a3Z-cr-kog"/>
+                        <outlet property="menuButton" destination="RlG-0C-jIB" id="RhU-8s-GGr"/>
                         <outlet property="outputTextView" destination="Qmg-Nl-57d" id="svi-te-Oar"/>
-                        <outlet property="syncButtonPressed" destination="QrL-bd-1Mx" id="06V-SN-MLK"/>
+                        <outlet property="syncButton" destination="QrL-bd-1Mx" id="VtF-qS-9mY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGz-t3-4cV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -166,7 +214,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="1ta-fY-wrC">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="c5a-Kv-m1r">
                             <connections>
-                                <action selector="menuButtonPressed:" destination="P5p-Lw-gKE" id="4zC-yB-Sf0"/>
+                                <action selector="menuButtonPressed:" destination="P5p-Lw-gKE" id="6n5-rH-Doh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -193,12 +241,11 @@
                     <navigationItem key="navigationItem" title="About" id="Gp3-F2-jvS">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="2UU-62-jQX">
                             <connections>
-                                <action selector="menuButtonPressed:" destination="0No-MS-b4o" id="IJD-W1-bul"/>
+                                <action selector="menuButtonPressed:" destination="0No-MS-b4o" id="LVz-ol-96g"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="menuButtonPressed" destination="2UU-62-jQX" id="WgN-sA-8e8"/>
                         <outlet property="textView" destination="M0a-DA-OdO" id="Tau-oH-5gy"/>
                     </connections>
                 </viewController>

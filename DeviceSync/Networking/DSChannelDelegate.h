@@ -26,7 +26,7 @@
 #import <UIKit/UIKit.h>
 #import <PTChannel.h>
 
-// forward declaration, break cycle
+// forward declaration, break import cycle
 @class DSMainViewController;
 
 @interface DSChannelDelegate : NSObject <PTChannelDelegate>
